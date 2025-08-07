@@ -53,6 +53,7 @@ const FreeGuideAccess: React.FC<FreeGuideAccessProps> = ({ htmlContent, cssConte
     <>
       <Head>
         <title>Free Guide Access</title>
+        <base href="https://go.usmarketmastery.com/" />
         <style>{cssContent}</style>
       </Head>
       {isMounted && <div dangerouslySetInnerHTML={{ __html: htmlContent }} />}
