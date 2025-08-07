@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 
@@ -43,13 +43,19 @@ export const getServerSideProps: GetServerSideProps<FreeGuideAccessProps> = asyn
 };
 
 const FreeGuideAccess: React.FC<FreeGuideAccessProps> = ({ htmlContent, cssContent }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <>
       <Head>
         <title>Free Guide Access</title>
         <style>{cssContent}</style>
       </Head>
-      <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      {isMounted && <div dangerouslySetInnerHTML={{ __html: htmlContent }} />}
     </>
   );
 };
